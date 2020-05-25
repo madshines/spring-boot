@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+这是成功的喜悦
+<div id="1" class="la" th:id="${id}" th:class="${class}" th:text="${student}">这是学生信息</div>
+
+<h4 th:text="${l}" th:each="l:${list}"></h4>
+<h4>
+    <span th:text="${l}" th:each="l:${list}"></span>
+</h4>
+</body>
+</html>

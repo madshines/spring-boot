@@ -1,0 +1,38 @@
+spring:
+  datasource:
+    username: root
+    password: zyh19980604zyh
+    url: jdbc:mysql://47.92.225.99:3306/student?characterEncoding=UTF-8
+    type: com.alibaba.druid.pool.DruidDataSource
+    # 配置，默认是没有作用的
+    # 初始化大小，最小，最大
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    # 配置获取连接等待超时的时间(毫秒)
+    maxWait: 60000
+    # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    timeBetweenEvictionRunsMillis: 60000
+    # 配置有一个连接在连接池中的最小生存时间，单位是毫秒
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    # 打开PSCache，指定每个连接上PSCache的大小
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    #配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+    filters: stat,wall,slf4j
+    useGlobalDataSourceStat: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
+
+#    将需要运行应用时执行的sql语句放在sql文件下，然后在schema下引入，如下：
+#    schema:
+#      -classpath:sql/student.sql
+mybatis:
+#  在spring的配置文件指定了mybatis的配置文件 就不能在spring的配置里面写入mybatis的配置
+#  configuration:
+#    map-underscore-to-camel-case: true
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml

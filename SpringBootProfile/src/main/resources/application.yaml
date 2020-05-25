@@ -1,0 +1,15 @@
+server:
+  port: 8082
+spring:
+  profiles:
+    active: test
+---
+server:
+  port: 8083
+spring:
+  profiles: dev
+---
+server:
+  port: 9748
+spring:
+  profiles: test

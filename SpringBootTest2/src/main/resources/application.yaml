@@ -1,0 +1,26 @@
+#student:
+#  id: 1
+#  name: 张宇恒
+#  dog:
+#    id: 1000
+#    name: tom
+#  list:
+#    - list1
+#    - list2
+#    - list3
+#  map:
+#    k1: v1
+#    k2: v2
+#    k3: v3
+student:
+  id: 1
+  name: 张三
+  dog:
+    id: 100
+    name: 旺财
+  list: [1,2,3,4,5]
+  map: {k1: v1,k2: v2,k3: v3}
+
+dog:
+  dog-id: 200
+  dog-name: 阿黄
