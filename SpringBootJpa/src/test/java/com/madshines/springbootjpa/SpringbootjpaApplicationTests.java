@@ -27,7 +27,7 @@ class SpringbootjpaApplicationTests {
 //        test1Repository.insertClass(5,"三班");
 //        MyClass myClass=new MyClass(5,"五班");
 //        test1Repository.save(myClass);
-        MyClass myClass1 = new MyClass(1, "一班");
+        MyClass myClass1 = new MyClass(2, "二班");
         test2Repository.save(myClass1);
     }
 
