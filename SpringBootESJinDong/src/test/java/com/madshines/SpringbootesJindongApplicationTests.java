@@ -1,7 +1,12 @@
 package com.madshines;
 
 import com.madshines.pojo.Content;
+import com.madshines.pojo.Role;
+import com.madshines.pojo.User;
 import com.madshines.repository.ContentRepository;
+
+import com.madshines.repository.RoleRepository;
+import com.madshines.repository.UserRepository;
 import com.madshines.service.ContentService;
 import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.action.search.SearchResponse;
@@ -14,10 +19,12 @@ import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @SpringBootTest
 class SpringbootesJindongApplicationTests {
@@ -27,6 +34,10 @@ class SpringbootesJindongApplicationTests {
     RestHighLevelClient restHighLevelClient;
     @Autowired
     ContentRepository contentRepository;
+    @Autowired
+    UserRepository userRepository;
+    @Autowired
+    RoleRepository roleRepository;
     @Test
     void contextLoads() throws IOException {
         contentService.parseContent("java");
@@ -54,6 +65,21 @@ class SpringbootesJindongApplicationTests {
     }
     @Test
     void insertJD(){
-        contentRepository.save(new Content("java","picture","10.3"));
+        //contentRepository.save(new Content("java","picture","10.3"));
+        BCryptPasswordEncoder bCryptPasswordEncoder=new BCryptPasswordEncoder();
+        String n = bCryptPasswordEncoder.encode("123456");
+        System.out.println(n);
+
+    }
+    @Test
+    void find(){
+        User name = userRepository.findByUserName("tom");
+        System.out.println(name);
+//        Optional<User> id = loginRepository.findById(1);
+//        System.out.println(id);
+        List<Role> userName = roleRepository.findRoleByUserName("张宇恒");
+        for (Role role : userName) {
+            System.out.println(role);
+        }
     }
 }
